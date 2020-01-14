@@ -8,14 +8,20 @@ class Triangle
  end
  
  def kind
-   
+    begin
+      raise PartnerError
+        rescue PartnerError => error
+            puts error.message
+        end
    
    return type should be a symbol
  end
  
  
  class TriangleError < StandardError
-   
+   def message
+     "Try againg man!"
+   end
  end
  
 end
