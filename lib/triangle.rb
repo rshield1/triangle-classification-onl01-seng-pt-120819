@@ -8,14 +8,15 @@ class Triangle
  end
  
  def kind
-    begin
-      raise PartnerError
-        rescue PartnerError => error
-            puts error.message
-        end
-   
-   return type should be a symbol
- end
+    validate_triangle
+    if side_1 == side_2 && side_2 == side_3
+      :equilateral
+    elsif side_1 == side_2 || side_2 == side_3 || side_1 == side_3
+      :isosceles
+    else
+      :scalene
+    end
+  end
  
  
  class TriangleError < StandardError
