@@ -17,6 +17,14 @@ class Triangle
       :scalene
     end
   end
+  
+  def validate_triangle
+    real_triangle = [(side_1 + side_2 > side_3), (side_1 + side_3 > side_2), (side_2 + side_3 > side_1)]
+    [side_1, side_2, side_3].each do |side|
+      real_triangle << false if side <= 0 
+    raise TriangleError if real_triangle.include?(false)
+    end
+  end
  
  
  class TriangleError < StandardError
